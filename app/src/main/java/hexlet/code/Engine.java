@@ -19,4 +19,13 @@ public class Engine {
         }
         return result;
     }
+
+    public static int calculateGCD(int firstDigit, int secondDigit) {
+        while (secondDigit != 0) {
+            int tmp = firstDigit % secondDigit;
+            firstDigit = secondDigit;
+            secondDigit = tmp;
+        }
+        return firstDigit;
+    }
 }
