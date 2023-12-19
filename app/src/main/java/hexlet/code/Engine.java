@@ -15,7 +15,8 @@ public class Engine {
             System.out.println("Correct!");
             result = true;
         } else {
-            System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + gameAnswer + ".");
+            System.out.print("'" + userAnswer + "'" + " is wrong answer ;(.");
+            System.out.println(" Correct answer was " + "'" + gameAnswer + "'" + ".");
             System.out.println("Let's try again, " + userName + "!");
         }
         return result;
