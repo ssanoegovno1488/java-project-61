@@ -27,7 +27,7 @@ public class Progression {
             String answerToCompare = progressionSequence[elementToReplace];
 
             progressionSequence[elementToReplace] = "..";
-            String progressionSequenceForPrint = String.join(", ", progressionSequence);
+            String progressionSequenceForPrint = String.join(" ", progressionSequence);
             System.out.println("Question: " + progressionSequenceForPrint);
 
             String userAnswer = Engine.getUserInput().toLowerCase();
