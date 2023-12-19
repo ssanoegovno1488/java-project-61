@@ -15,7 +15,7 @@ public class GCD {
             int maxValue = 50;
             int firstDigit = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             int secondDigit = minValue + (int) (Math.random() * (maxValue - minValue + 1));
-            String answerToCompare = String.valueOf(Engine.calculateGCD(firstDigit, secondDigit));
+            String answerToCompare = String.valueOf(calculateGCD(firstDigit, secondDigit));
             System.out.println("Question: " + firstDigit + " " + secondDigit);
             String userAnswer = Engine.getUserInput().toLowerCase();
             boolean result = Engine.answersComparsion(answerToCompare, userAnswer, userName);
@@ -28,5 +28,14 @@ public class GCD {
         if (count == 3) {
             System.out.println("Congratulations, " + userName + "!");
         }
+    }
+
+    private static int calculateGCD(int firstDigit, int secondDigit) {
+        while (secondDigit != 0) {
+            int tmp = firstDigit % secondDigit;
+            firstDigit = secondDigit;
+            secondDigit = tmp;
+        }
+        return firstDigit;
     }
 }

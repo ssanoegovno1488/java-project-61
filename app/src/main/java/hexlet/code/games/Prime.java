@@ -4,18 +4,18 @@ import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import static hexlet.code.Engine.ROUNDS_COUNT;
-
-public class Even {
-    public static void startEvenGame() {
+public class Prime {
+    public static void startPrimeGame() {
         int count = 0;
         var userName = Cli.getUserName();
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
         while (count < ROUNDS_COUNT) {
             int minValue = 1;
-            int maxValue = 50;
+            int maxValue = 100;
             int randomValue = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             String answerToCompare;
-            if (randomValue % 2 == 0) {
+
+            if (isPrime(randomValue)) {
                 answerToCompare = "yes";
             } else {
                 answerToCompare = "no";
@@ -34,5 +34,17 @@ public class Even {
         if (count == 3) {
             System.out.println("Congratulations, " + userName + "!");
         }
+    }
+
+    private static boolean isPrime(int number) {
+        if (number < 2) {
+            return false;
+        }
+        for (int i = 2; i <= number / 2; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }

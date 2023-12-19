@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Engine {
     public static final int ROUNDS_COUNT = 3;
     public static String getUserInput() {
+        System.out.print("Your answer: ");
         Scanner scanner = new Scanner(System.in);
         return scanner.next();
     }
@@ -18,14 +19,5 @@ public class Engine {
             System.out.println("Let's try again, " + userName);
         }
         return result;
-    }
-
-    public static int calculateGCD(int firstDigit, int secondDigit) {
-        while (secondDigit != 0) {
-            int tmp = firstDigit % secondDigit;
-            firstDigit = secondDigit;
-            secondDigit = tmp;
-        }
-        return firstDigit;
     }
 }
