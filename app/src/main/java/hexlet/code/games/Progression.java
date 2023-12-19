@@ -8,6 +8,7 @@ import static hexlet.code.Engine.MAXIMUM_VALUE;
 import static hexlet.code.Engine.ROUNDS_COUNT;
 
 public class Progression {
+    private static final int VALUE_FOR_PROGRESSION_LENGTH = 10;
     public static void startProgressionGame() {
         int count = 0;
         var userName = Cli.getUserName();
@@ -17,8 +18,8 @@ public class Progression {
             int maxValue = MAXIMUM_VALUE;
             int startValue = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             int incrementValue = minValue + (int) (Math.random() * (maxValue - minValue + 1));
-            int elementToReplace = minValue + (int) (Math.random() * (10 - minValue));
-            int numberOfTerms = 10;
+            int elementToReplace = minValue + (int) (Math.random() * (VALUE_FOR_PROGRESSION_LENGTH - minValue));
+            int numberOfTerms = VALUE_FOR_PROGRESSION_LENGTH;
 
             String[] progressionSequence = new String[numberOfTerms];
 

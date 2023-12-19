@@ -10,6 +10,7 @@ import static hexlet.code.Engine.MAXIMUM_VALUE;
 import static hexlet.code.Engine.ROUNDS_COUNT;
 
 public class Calc {
+    private static final int NUMBER_OF_MATH_OPERATIONS = 3;
     public static void startCalcGame() {
         int count = 0;
         var userName = Cli.getUserName();
@@ -22,8 +23,7 @@ public class Calc {
             int secondOperand = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             char operator;
             int value = 0;
-            int numberOfOperations = 3;
-            switch (r.nextInt(numberOfOperations)) {
+            switch (r.nextInt(NUMBER_OF_MATH_OPERATIONS)) {
                 case 0:
                     operator = '+';
                     value = firstOperand + secondOperand;
