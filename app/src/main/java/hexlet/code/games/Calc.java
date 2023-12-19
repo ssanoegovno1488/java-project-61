@@ -38,7 +38,7 @@ public class Calc {
             }
 
             String answerToCompare = String.valueOf(value);
-            System.out.println("Question: " + firstOperand + operator + secondOperand);
+            System.out.println("Question: " + firstOperand + " " + operator + " " + secondOperand);
             String userAnswer = Engine.getUserInput().toLowerCase();
 
             boolean result = Engine.answersComparsion(answerToCompare, userAnswer, userName);
