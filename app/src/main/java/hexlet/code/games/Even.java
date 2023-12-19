@@ -3,6 +3,8 @@ package hexlet.code.games;
 import hexlet.code.Cli;
 import hexlet.code.Engine;
 
+import static hexlet.code.Engine.MINIMUM_VALUE;
+import static hexlet.code.Engine.MAXIMUM_VALUE;
 import static hexlet.code.Engine.ROUNDS_COUNT;
 
 public class Even {
@@ -11,8 +13,8 @@ public class Even {
         var userName = Cli.getUserName();
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         while (count < ROUNDS_COUNT) {
-            int minValue = 1;
-            int maxValue = 50;
+            int minValue = MINIMUM_VALUE;
+            int maxValue = MAXIMUM_VALUE;
             int randomValue = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             String answerToCompare;
             if (randomValue % 2 == 0) {
@@ -31,7 +33,7 @@ public class Even {
                 break;
             }
         }
-        if (count == 3) {
+        if (count == ROUNDS_COUNT) {
             System.out.println("Congratulations, " + userName + "!");
         }
     }

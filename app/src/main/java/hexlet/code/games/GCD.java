@@ -3,6 +3,8 @@ package hexlet.code.games;
 import hexlet.code.Cli;
 import hexlet.code.Engine;
 
+import static hexlet.code.Engine.MINIMUM_VALUE;
+import static hexlet.code.Engine.MAXIMUM_VALUE;
 import static hexlet.code.Engine.ROUNDS_COUNT;
 
 public class GCD {
@@ -11,8 +13,8 @@ public class GCD {
         var userName = Cli.getUserName();
         System.out.println("Find the greatest common divisor of given numbers.");
         while (count < ROUNDS_COUNT) {
-            int minValue = 1;
-            int maxValue = 50;
+            int minValue = MINIMUM_VALUE;
+            int maxValue = MAXIMUM_VALUE;
             int firstDigit = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             int secondDigit = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             String answerToCompare = String.valueOf(calculateGCD(firstDigit, secondDigit));
@@ -25,7 +27,7 @@ public class GCD {
                 break;
             }
         }
-        if (count == 3) {
+        if (count == ROUNDS_COUNT) {
             System.out.println("Congratulations, " + userName + "!");
         }
     }

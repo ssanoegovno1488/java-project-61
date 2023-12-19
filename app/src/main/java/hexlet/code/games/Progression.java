@@ -3,6 +3,8 @@ package hexlet.code.games;
 import hexlet.code.Cli;
 import hexlet.code.Engine;
 
+import static hexlet.code.Engine.MINIMUM_VALUE;
+import static hexlet.code.Engine.MAXIMUM_VALUE;
 import static hexlet.code.Engine.ROUNDS_COUNT;
 
 public class Progression {
@@ -11,11 +13,11 @@ public class Progression {
         var userName = Cli.getUserName();
         System.out.println("What number is missing in the progression?");
         while (count < ROUNDS_COUNT) {
-            int minValue = 1;
-            int maxValue = 10;
+            int minValue = MINIMUM_VALUE;
+            int maxValue = MAXIMUM_VALUE;
             int startValue = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             int incrementValue = minValue + (int) (Math.random() * (maxValue - minValue + 1));
-            int elementToReplace = minValue + (int) (Math.random() * (maxValue - minValue));
+            int elementToReplace = minValue + (int) (Math.random() * (10 - minValue));
             int numberOfTerms = 10;
 
             String[] progressionSequence = new String[numberOfTerms];
@@ -38,7 +40,7 @@ public class Progression {
             } else {
                 break;
             }
-            if (count == 3) {
+            if (count == ROUNDS_COUNT) {
                 System.out.println("Congratulations, " + userName + "!");
             }
         }

@@ -5,6 +5,8 @@ import hexlet.code.Engine;
 
 import java.util.Random;
 
+import static hexlet.code.Engine.MINIMUM_VALUE;
+import static hexlet.code.Engine.MAXIMUM_VALUE;
 import static hexlet.code.Engine.ROUNDS_COUNT;
 
 public class Calc {
@@ -14,13 +16,14 @@ public class Calc {
         System.out.println("What is the result of the expression?");
         while (count < ROUNDS_COUNT) {
             Random r = new Random();
-            int minValue = 1;
-            int maxValue = 50;
+            int minValue = MINIMUM_VALUE;
+            int maxValue = MAXIMUM_VALUE;
             int firstOperand = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             int secondOperand = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             char operator;
             int value = 0;
-            switch (r.nextInt(3)) {
+            int numberOfOperations = 3;
+            switch (r.nextInt(numberOfOperations)) {
                 case 0:
                     operator = '+';
                     value = firstOperand + secondOperand;
@@ -48,7 +51,7 @@ public class Calc {
                 break;
             }
         }
-        if (count == 3) {
+        if (count == ROUNDS_COUNT) {
             System.out.println("Congratulations, " + userName + "!");
         }
     }

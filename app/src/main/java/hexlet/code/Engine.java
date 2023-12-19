@@ -3,6 +3,8 @@ package hexlet.code;
 import java.util.Scanner;
 public class Engine {
     public static final int ROUNDS_COUNT = 3;
+    public static final int MINIMUM_VALUE = 1;
+    public static final int MAXIMUM_VALUE = 50;
     public static String getUserInput() {
         System.out.print("Your answer: ");
         Scanner scanner = new Scanner(System.in);
