@@ -1,6 +1,5 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Random;
@@ -10,49 +9,28 @@ import static hexlet.code.Engine.MAXIMUM_VALUE;
 import static hexlet.code.Engine.ROUNDS_COUNT;
 
 public class Calc {
-    private static final int NUMBER_OF_MATH_OPERATIONS = 3;
+    private static final char[] OPERATORS = {'+', '-', '*'};
     public static void startCalcGame() {
-        int count = 0;
-        var userName = Cli.getUserName();
-        System.out.println("What is the result of the expression?");
-        while (count < ROUNDS_COUNT) {
-            Random r = new Random();
-            int minValue = MINIMUM_VALUE;
-            int maxValue = MAXIMUM_VALUE;
+        String[] gameQuestions = new String[ROUNDS_COUNT];
+        String[] gameAnswers = new String[ROUNDS_COUNT];
+        int minValue = MINIMUM_VALUE;
+        int maxValue = MAXIMUM_VALUE;
+        String gameStartSalute = "What is the result of the expression?";
+        for (int i = 0; i < ROUNDS_COUNT; i++) {
             int firstOperand = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             int secondOperand = minValue + (int) (Math.random() * (maxValue - minValue + 1));
-            char operator;
-            int value = 0;
-            switch (r.nextInt(NUMBER_OF_MATH_OPERATIONS)) {
-                case 0:
-                    operator = '+';
-                    value = firstOperand + secondOperand;
-                    break;
-                case 1:
-                    operator = '-';
-                    value = firstOperand - secondOperand;
-                    break;
-                case 2:
-                    operator = '*';
-                    value = firstOperand * secondOperand;
-                    break;
-                default:
-                    operator = '?';
-            }
-
-            String answerToCompare = String.valueOf(value);
-            System.out.println("Question: " + firstOperand + " " + operator + " " + secondOperand);
-            String userAnswer = Engine.getUserInput().toLowerCase();
-
-            boolean result = Engine.answersComparsion(answerToCompare, userAnswer, userName);
-            if (result) {
-                count++;
-            } else {
-                break;
-            }
+            char operator = OPERATORS[new Random().nextInt(0, OPERATORS.length)];
+            gameQuestions[i] = firstOperand + " " + operator + " " + secondOperand;
+            gameAnswers[i] = String.valueOf(calculateTwoOperands(firstOperand, secondOperand, operator));
         }
-        if (count == ROUNDS_COUNT) {
-            System.out.println("Congratulations, " + userName + "!");
-        }
+        Engine.gameLauncher(gameQuestions, gameAnswers, gameStartSalute);
+    }
+    private static int calculateTwoOperands(int firstOperand, int secondOperand, char operator) {
+        return switch (operator) {
+            case '+' -> firstOperand + secondOperand;
+            case '-' -> firstOperand - secondOperand;
+            case '*' -> firstOperand * secondOperand;
+            default -> 0;
+        };
     }
 }

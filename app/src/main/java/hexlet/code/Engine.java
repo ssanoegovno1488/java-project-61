@@ -11,16 +11,32 @@ public class Engine {
         return scanner.next();
     }
 
-    public static boolean answersComparsion(String gameAnswer, String userAnswer, String userName) {
-        boolean result = false;
-        if (gameAnswer.equals(userAnswer)) {
-            System.out.println("Correct!");
-            result = true;
-        } else {
-            System.out.print("'" + userAnswer + "'" + " is wrong answer ;(.");
-            System.out.println(" Correct answer was " + "'" + gameAnswer + "'" + ".");
-            System.out.println("Let's try again, " + userName + "!");
+    public static boolean answersComparsion(String gameAnswer, String userAnswer) {
+        return gameAnswer.equals(userAnswer);
+    }
+
+    public static void gameLauncher(String[] gameQuestions, String[] gameAnswers, String gameStartSalute) {
+        int count = 0;
+        System.out.println("Question:" + gameStartSalute);
+        String userName = Cli.getUserName();
+        for (int i = 0; i < ROUNDS_COUNT; i++) {
+            String gameQuestion = gameQuestions[i];
+            String gameAnswer = gameAnswers[i];
+            System.out.println("Question:" + gameQuestion);
+            String userAnswer = getUserInput().toLowerCase();
+            boolean result = answersComparsion(gameAnswer, userAnswer);
+            if (result) {
+                System.out.println("Correct!");
+                count++;
+            } else {
+                System.out.print("'" + userAnswer + "'" + " is wrong answer ;(.");
+                System.out.println(" Correct answer was " + "'" + gameAnswer + "'" + ".");
+                System.out.println("Let's try again, " + userName + "!");
+                break;
+            }
+            if (count == ROUNDS_COUNT) {
+                System.out.println("Congratulations, " + userName + "!");
+            }
         }
-        return result;
     }
 }
