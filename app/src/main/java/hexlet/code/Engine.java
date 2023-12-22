@@ -22,7 +22,7 @@ public class Engine {
         for (int i = 0; i < ROUNDS_COUNT; i++) {
             String gameQuestion = gameQuestions[i];
             String gameAnswer = gameAnswers[i];
-            System.out.println("Question:" + gameQuestion);
+            System.out.println("Question: " + gameQuestion);
             String userAnswer = getUserInput().toLowerCase();
             boolean result = answersComparsion(gameAnswer, userAnswer);
             if (result) {
