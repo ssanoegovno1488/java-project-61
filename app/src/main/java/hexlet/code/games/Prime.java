@@ -12,23 +12,24 @@ public class Prime {
         String[] gameAnswers = new String[ROUNDS_COUNT];
         int minValue = MINIMUM_VALUE;
         int maxValue = MAXIMUM_VALUE;
-        String gameStartSalute = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        String gameDescription = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
         for (int i = 0; i < ROUNDS_COUNT; i++) {
             int randomValue = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             gameQuestions[i] = String.valueOf(randomValue);
-            gameAnswers[i] = isPrime(randomValue);
+            if (isPrime(randomValue)) {
+                gameAnswers[i] = "yes";
+            } else {
+                gameAnswers[i] = "no";
+            }
         }
-        Engine.gameLauncher(gameQuestions, gameAnswers, gameStartSalute);
+        Engine.runGame(gameQuestions, gameAnswers, gameDescription);
     }
 
-    private static String isPrime(int number) {
-        String result = "yes";
-        if (number < 2) {
-            result = "no";
-        }
+    private static boolean isPrime(int number) {
+        boolean result = number >= 2;
         for (int i = 2; i <= number / 2; i++) {
             if (number % i == 0) {
-                result = "no";
+                result = false;
                 break;
             }
         }

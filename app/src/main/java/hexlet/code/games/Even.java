@@ -12,21 +12,21 @@ public class Even {
         String[] gameAnswers = new String[ROUNDS_COUNT];
         int minValue = MINIMUM_VALUE;
         int maxValue = MAXIMUM_VALUE;
-        String gameStartSalute = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        String gameDescription = "Answer 'yes' if the number is even, otherwise answer 'no'.";
         for (int i = 0; i < ROUNDS_COUNT; i++) {
             int randomValue = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             gameQuestions[i] = String.valueOf(randomValue);
-            gameAnswers[i] = isEven(randomValue);
+            if (isEven(randomValue)) {
+                gameAnswers[i] = "yes";
+            } else {
+                gameAnswers[i] = "no";
+            }
         }
-        Engine.gameLauncher(gameQuestions, gameAnswers, gameStartSalute);
+        Engine.runGame(gameQuestions, gameAnswers, gameDescription);
     }
-    private static String isEven(int randomValue) {
-        String result;
-        if (randomValue % 2 == 0) {
-            result = "yes";
-        } else {
-            result = "no";
-        }
+    private static boolean isEven(int randomValue) {
+        boolean result;
+        result = randomValue % 2 == 0;
         return result;
     }
 }

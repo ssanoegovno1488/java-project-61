@@ -12,7 +12,7 @@ public class GCD {
         String[] gameAnswers = new String[ROUNDS_COUNT];
         int minValue = MINIMUM_VALUE;
         int maxValue = MAXIMUM_VALUE;
-        String gameStartSalute = "Find the greatest common divisor of given numbers.";
+        String gameDescription = "Find the greatest common divisor of given numbers.";
         for (int i = 0; i < ROUNDS_COUNT; i++) {
             int firstDigit = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             int secondDigit = minValue + (int) (Math.random() * (maxValue - minValue + 1));
@@ -20,7 +20,7 @@ public class GCD {
             gameQuestions[i] = firstDigit + " " + secondDigit;
 
         }
-        Engine.gameLauncher(gameQuestions, gameAnswers, gameStartSalute);
+        Engine.runGame(gameQuestions, gameAnswers, gameDescription);
     }
 
     private static int calculateGCD(int firstDigit, int secondDigit) {

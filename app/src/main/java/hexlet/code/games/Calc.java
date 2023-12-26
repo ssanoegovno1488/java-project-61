@@ -15,22 +15,22 @@ public class Calc {
         String[] gameAnswers = new String[ROUNDS_COUNT];
         int minValue = MINIMUM_VALUE;
         int maxValue = MAXIMUM_VALUE;
-        String gameStartSalute = "What is the result of the expression?";
+        String gameDescription = "What is the result of the expression?";
         for (int i = 0; i < ROUNDS_COUNT; i++) {
             int firstOperand = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             int secondOperand = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             char operator = OPERATORS[new Random().nextInt(0, OPERATORS.length)];
             gameQuestions[i] = firstOperand + " " + operator + " " + secondOperand;
-            gameAnswers[i] = String.valueOf(calculateTwoOperands(firstOperand, secondOperand, operator));
+            gameAnswers[i] = calculateTwoOperands(firstOperand, secondOperand, operator);
         }
-        Engine.gameLauncher(gameQuestions, gameAnswers, gameStartSalute);
+        Engine.runGame(gameQuestions, gameAnswers, gameDescription);
     }
-    private static int calculateTwoOperands(int firstOperand, int secondOperand, char operator) {
+    private static String calculateTwoOperands(int firstOperand, int secondOperand, char operator) {
         return switch (operator) {
-            case '+' -> firstOperand + secondOperand;
-            case '-' -> firstOperand - secondOperand;
-            case '*' -> firstOperand * secondOperand;
-            default -> 0;
+            case '+' -> String.valueOf(firstOperand + secondOperand);
+            case '-' -> String.valueOf(firstOperand - secondOperand);
+            case '*' -> String.valueOf(firstOperand * secondOperand);
+            default -> throw new RuntimeException("Для оператора " + operator + " логика не определена");
         };
     }
 }

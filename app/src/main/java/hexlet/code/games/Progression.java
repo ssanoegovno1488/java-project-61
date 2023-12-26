@@ -14,21 +14,25 @@ public class Progression {
         int minValue = MINIMUM_VALUE;
         int maxValue = MAXIMUM_VALUE;
         int numberOfTerms = VALUE_FOR_PROGRESSION_LENGTH;
-        String gameStartSalute = "What number is missing in the progression?";
+        String gameDescription = "What number is missing in the progression?";
         for (int i = 0; i < ROUNDS_COUNT; i++) {
             int startValue = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             int incrementValue = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             int elementToReplace = minValue + (int) (Math.random() * (VALUE_FOR_PROGRESSION_LENGTH - minValue));
-            String[] progressionSequence = new String[numberOfTerms];
+            String[] progressionSequence = getProgression(startValue, incrementValue, numberOfTerms);
 
-            for (int j = 0; j < numberOfTerms; j++) {
-                progressionSequence[j] = String.valueOf(startValue + (j * incrementValue));
-            }
             gameAnswers[i] = progressionSequence[elementToReplace];
             progressionSequence[elementToReplace] = "..";
             String progressionSequenceForPrint = String.join(" ", progressionSequence);
             gameQuestions[i] = progressionSequenceForPrint;
         }
-        Engine.gameLauncher(gameQuestions, gameAnswers, gameStartSalute);
+        Engine.runGame(gameQuestions, gameAnswers, gameDescription);
+    }
+    private static String[] getProgression(int startValue, int incrementValue, int numberOfTerms) {
+        String[] progressionSequence = new String[numberOfTerms];
+        for (int j = 0; j < numberOfTerms; j++) {
+            progressionSequence[j] = String.valueOf(startValue + (j * incrementValue));
+        }
+        return progressionSequence;
     }
 }
