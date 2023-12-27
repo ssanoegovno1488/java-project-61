@@ -7,12 +7,12 @@ import static hexlet.code.Engine.MAXIMUM_VALUE;
 import static hexlet.code.Engine.ROUNDS_COUNT;
 
 public class Prime {
+    private static final String GAME_DESCRIPTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     public static void startPrimeGame() {
         String[] gameQuestions = new String[ROUNDS_COUNT];
         String[] gameAnswers = new String[ROUNDS_COUNT];
         int minValue = MINIMUM_VALUE;
         int maxValue = MAXIMUM_VALUE;
-        String gameDescription = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
         for (int i = 0; i < ROUNDS_COUNT; i++) {
             int randomValue = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             gameQuestions[i] = String.valueOf(randomValue);
@@ -22,17 +22,18 @@ public class Prime {
                 gameAnswers[i] = "no";
             }
         }
-        Engine.runGame(gameQuestions, gameAnswers, gameDescription);
+        Engine.runGame(gameQuestions, gameAnswers, GAME_DESCRIPTION);
     }
 
     private static boolean isPrime(int number) {
-        boolean result = number >= 2;
-        for (int i = 2; i <= number / 2; i++) {
+        if (number < 2) {
+            return false;
+        }
+        for (int i = 2; i < number / 2; i++) {
             if (number % i == 0) {
-                result = false;
-                break;
+                return false;
             }
         }
-        return result;
+        return true;
     }
 }

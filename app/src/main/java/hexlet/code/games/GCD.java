@@ -7,12 +7,12 @@ import static hexlet.code.Engine.MAXIMUM_VALUE;
 import static hexlet.code.Engine.ROUNDS_COUNT;
 
 public class GCD {
+    private static final String GAME_DESCRIPTION = "Find the greatest common divisor of given numbers.";
     public static void startGCDGame() {
         String[] gameQuestions = new String[ROUNDS_COUNT];
         String[] gameAnswers = new String[ROUNDS_COUNT];
         int minValue = MINIMUM_VALUE;
         int maxValue = MAXIMUM_VALUE;
-        String gameDescription = "Find the greatest common divisor of given numbers.";
         for (int i = 0; i < ROUNDS_COUNT; i++) {
             int firstDigit = minValue + (int) (Math.random() * (maxValue - minValue + 1));
             int secondDigit = minValue + (int) (Math.random() * (maxValue - minValue + 1));
@@ -20,7 +20,7 @@ public class GCD {
             gameQuestions[i] = firstDigit + " " + secondDigit;
 
         }
-        Engine.runGame(gameQuestions, gameAnswers, gameDescription);
+        Engine.runGame(gameQuestions, gameAnswers, GAME_DESCRIPTION);
     }
 
     private static int calculateGCD(int firstDigit, int secondDigit) {

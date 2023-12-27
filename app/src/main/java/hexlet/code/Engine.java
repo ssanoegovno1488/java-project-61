@@ -8,8 +8,8 @@ public class Engine {
 
     public static void runGame(String[] gameQuestions, String[] gameAnswers, String gameDescription) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Question:" + gameDescription);
         String userName = Cli.getUserName();
+        System.out.println(gameDescription);
         for (int i = 0; i < ROUNDS_COUNT; i++) {
             String gameQuestion = gameQuestions[i];
             String gameAnswer = gameAnswers[i];
@@ -18,16 +18,14 @@ public class Engine {
             String userAnswer = scanner.next().toLowerCase();
             if (gameAnswer.equals(userAnswer)) {
                 System.out.println("Correct!");
-                if (i == ROUNDS_COUNT - 1) {
-                    System.out.println("Congratulations, " + userName + "!");
-                }
             } else {
                 System.out.print("'" + userAnswer + "'" + " is wrong answer ;(.");
                 System.out.println(" Correct answer was " + "'" + gameAnswer + "'" + ".");
                 System.out.println("Let's try again, " + userName + "!");
-                break;
+                return;
             }
         }
+        System.out.println("Congratulations, " + userName + "!");
         scanner.close();
     }
 }
